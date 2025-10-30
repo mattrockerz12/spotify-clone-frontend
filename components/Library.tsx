@@ -1,8 +1,13 @@
+import { useRouter } from "next/navigation";
 import { AiOutlinePlus } from "react-icons/ai";
 import { TbPlaylist } from "react-icons/tb";
 
 const Library = () => {
-  const onClick = () => {};
+  const router = useRouter();
+
+  const handleOpen = () => {
+    router.push("/song");
+  };
 
   return (
     <div className="flex flex-col">
@@ -12,7 +17,7 @@ const Library = () => {
           <p className="text-neutral-400 font-medium text-md">Your Library</p>
         </div>
         <AiOutlinePlus
-          onClick={onClick}
+          onClick={handleOpen}
           size={20}
           className="text-neutral-400 cursor-pointer hover:text-white transition"
         />

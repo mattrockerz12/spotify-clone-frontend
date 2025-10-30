@@ -4,7 +4,7 @@ import Providers from "./Provider";
 //import AppBar from "./AppBar";
 import { Figtree } from "next/font/google";
 import Sidebar from "@/components/Sidebar";
-import ModalProvider from "@/providers/ModalProvider";
+import { Suspense } from "react";
 
 const font = Figtree({ subsets: ["latin"] });
 
@@ -15,14 +15,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body className={font.className}>
         <Providers>
-          <ModalProvider />
+          <Suspense fallback={null}>{modal}</Suspense>
           <Sidebar>{children}</Sidebar>
         </Providers>
       </body>
